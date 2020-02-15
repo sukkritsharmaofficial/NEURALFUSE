@@ -13,14 +13,14 @@
 
 Given a content photo and a style photo,the code can transfer the style of the style photo to the content photo.
 
-<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png></p>
+<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
 
 <br>
 
 <!-- ## Visualize the Learning Process
 <img src="https://github.com/anfederico/Clairvoyant/blob/master/media/Learning.gif" width=40%>
-
-<br> -->
+-->
+<br> 
 
 ## Last Dependencies
 ```python
@@ -85,26 +85,63 @@ style_image_path = "YOUR LINK GOES HERE"
 
 #### Output
 
-<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png></p>
+<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Content.png"></p>
 
-<!-- ```text
-------------- Statistics --------------
+<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Style.png"></p>
 
-Buy and Hold : -6.18%
-Net Profit   : -61.84
-Strategy     : 5.82%
-Net Profit   : 58.21
-Longs        : 182
-Sells        : 168
-Shorts       : 0
-Covers       : 0
---------------------
-Total Trades : 350
+## Running Model 
+```python
+x = np.random.uniform(0, 255, (1, IMAGE_HEIGHT, IMAGE_WIDTH, 3)) - 128.
 
----------------------------------------
+for i in range(ITERATIONS):
+    x, loss, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(), fprime=evaluator.gradients, maxfun=20)
+    print("Iteration %d completed with loss %d" % (i, loss))
+    
+x = x.reshape((IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS))
+x = x[:, :, ::-1]
+x[:, :, 0] += IMAGENET_MEAN_RGB_VALUES[2]
+x[:, :, 1] += IMAGENET_MEAN_RGB_VALUES[1]
+x[:, :, 2] += IMAGENET_MEAN_RGB_VALUES[0]
+x = np.clip(x, 0, 255).astype("uint8")
+output_image = Image.fromarray(x)
+output_image.save(output_image_path)
+```
+#### Output
+
+```text
+Iteration 0 completed with loss 62434377728
+Iteration 1 completed with loss 33507442688
+Iteration 2 completed with loss 21433647104
+Iteration 3 completed with loss 16948576256
+Iteration 4 completed with loss 14893883392
+Iteration 5 completed with loss 13701744640
+.
+.
+.
+.
+Iteration 25 completed with loss 11944347648
+Iteration 26 completed with loss 11941498880
+Iteration 27 completed with loss 11939000320
+Iteration 28 completed with loss 11936762880
+Iteration 29 completed with loss 11934586880
 ```
 
-## Other Projects
+## Visualizing Combined results
+
+```python
+combined = Image.new("RGB", (IMAGE_WIDTH*3, IMAGE_HEIGHT))
+x_offset = 0
+for image in map(Image.open, [input_image_path, style_image_path, output_image_path]):
+    combined.paste(image, (x_offset, 0))
+    x_offset += IMAGE_WIDTH
+combined.save(combined_image_path)
+```
+
+#### Output
+
+<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
+
+<!-- ## Other Projects
 #### Intensive Backtesting
 The primary purpose of this project is to rapidly test datasets on machine learning algorithms (specifically Support Vector Machines). While the Simulation class allows for basic strategy testing, there are other projects more suited for that task. Once you've tested patterns within your data and simulated a basic strategy, I'd recommend taking your model to the next level with:
 ```text
@@ -132,4 +169,4 @@ Please take a look at our [contributing](https://github.com/anfederico/Clairvoya
 #### Pending Features
 - Export model
 - Support for multiple sklearn SVM models
-- Visualization for models with more than 2 features -->
+- Visualization for models with more than 2 features  -->
