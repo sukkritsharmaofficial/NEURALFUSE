@@ -20,17 +20,17 @@ Given a content photo and a style photo,the code can transfer the style of the s
 -->
 <br> 
 
+## Latest Development Changes
+```bash
+git clone https://github.com/sukkritsharmaofficial/NEURALFUSE.git
+```
+
 ## Download Dependencies
 ```bash
 pip install numpy
 pip install Pillow
 pip install keras
 pip install scipy
-```
-
-## Latest Development Changes
-```bash
-git clone https://github.com/sukkritsharmaofficial/NEURALFUSE
 ```
 
 ## Code
