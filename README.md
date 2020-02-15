@@ -20,7 +20,7 @@ Given a content photo and a style photo,the code can transfer the style of the s
 -->
 <br> 
 
-## Last Dependencies
+## Download Dependencies
 ```python
 pip install numpy
 pip install Pillow
