@@ -1,2 +1,1 @@
-# NEURALFUSE
-Given a content photo and a style photo,the code can transfer the style of the style photo to the content photo.
+<p align="center"><img width=60% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/large_neuralfuse.png"></p>
