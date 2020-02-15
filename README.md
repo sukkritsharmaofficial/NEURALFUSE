@@ -21,7 +21,7 @@ Given a content photo and a style photo,the code can transfer the style of the s
 <br> 
 
 ## Download Dependencies
-```python
+```bash
 pip install numpy
 pip install Pillow
 pip install keras
