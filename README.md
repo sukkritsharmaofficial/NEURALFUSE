@@ -13,7 +13,7 @@
 
 Given a content photo and a style photo,the code can transfer the style of the style photo to the content photo.
 
-<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
+<p align="center"><img width=80% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
 
 <br>
 
@@ -139,7 +139,7 @@ combined.save(combined_image_path)
 
 #### Output
 
-<p align="center"><img width=50% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
+<p align="center"><img width=80% src="https://raw.githubusercontent.com/sukkritsharmaofficial/NEURALFUSE/master/media/Output.png"></p>
 
 <!-- ## Other Projects
 #### Intensive Backtesting
